@@ -1,0 +1,26 @@
+* INSTALLING
+    npm install -g @angular/cli
+    ng version
+---------------------------------------------------------
+* HELP 
+    ng help
+---------------------------------------------------------
+* NEW PROJECT
+    ng new <project-name>
+    cd <project-name>
+    ng serve
+---------------------------------------------------------
+* BUILD PROD DIR
+    ng build my-app -c production
+    ng b --prod
+---------------------------------------------------------
+* GENERATE
+    * component ('ng generate' / 'ng g')
+        ng g c <my-component> --skip-test --is --flat
+        ng g m <my-module> --skip-tests
+        ng g guard
+        ng g pipe
+        ge g service --skip-test
+---------------------------------------------------------
+* TESTING
+    ng test

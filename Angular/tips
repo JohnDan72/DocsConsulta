@@ -1,0 +1,68 @@
+**** Tips ****
+
+---------------------------------------------------------------------------
+* Intalling styles
+    - instala los paquetes con npm
+    - ve a angular 'angular.json'
+    - en styles: ["path-node_modules"]
+    - en scripts: ["path-scripts-node_modules"] 
+---------------------------------------------------------------------------
+* Modules
+    -- ng g m <new-module> --flat
+    en:
+    --declaration: [<todos-tus-components>]
+    --inports: [<todas-las-dependencias>] (como RouteModule, FormModule) si usas forms y routing
+    --exports: [<todos-tus-components>] para ser ocupados fuera de la carpeta
+---------------------------------------------------------------------------
+* Routing
+    -- create a new .routing.ts file
+    -- code example:
+
+    const routes: Routes = [
+        { path: 'login' , component: LoginComponent },
+        { path: 'register' , component: RegisterComponent }
+    ]
+
+    @NgModule({
+        imports: [RouterModule.forChild(routes)],
+        exports: [RouterModule] 
+    })
+    export class AuthRoutingModule {}
+
+    # después en app-routing.module.ts
+    const routes: Routes = [
+        { path: 'workingonit', component: WorkingOnItComponent },
+        { path: '' , redirectTo: '/dashboard', pathMatch: 'full' },
+        { path: '**' , component: NotpagefoundComponent },
+    ]
+
+    @NgModule({
+        declarations: [],
+        imports: [
+            RouterModule.forRoot( routes ),
+            PagesRoutingModule,
+            AuthRoutingModule
+        ],
+        exports: [
+            RouterModule
+        ]
+    })
+    export class AppRoutingModule { }
+
+---------------------------------------------------------------------------
+* Guards y Lazyload
+    --into .routing.ts
+    --example code:
+
+    const routes: Routes = [
+    { 
+        path: 'dashboard' , 
+        component: PagesComponent,
+        canActivate: [ AuthGuard ],
+        canLoad: [AuthGuard],
+        loadChildren: () => import('./child-routes.module').then(
+            m => m.ChildRoutesModule
+        ),
+    },
+];
+---------------------------------------------------------------------------

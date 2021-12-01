@@ -1,0 +1,28 @@
+* example code:
+
+-- en .component.ts
+
+public items: Items[] = [];
+public condition = true;
+
+
+*ngFor
+------basic usage
+<tr *ngFor="let item of items; let ind = index">
+    <td class="text-center">
+        {{item.data}}
+    </td>
+</tr>
+
+------with index as i
+<tr *ngFor="let item of items; index as i">
+    <td class="text-center">
+        {{item.data}}
+    </td>
+</tr>
+
+-------ngForOf with first as isFirst
+<li *ngFor="let user of users; index as i; first as isFirst">
+    {{i}}/{{users.length}}. {{user}} 
+    <span *ngIf="isFirst">default</span>
+</li>

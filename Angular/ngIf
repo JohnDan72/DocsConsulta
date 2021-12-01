@@ -1,0 +1,42 @@
+* example code:
+
+-- en .component.ts
+
+public items: Items[] = [];
+public condition = true;
+
+
+-- en .component.html
+*ngIF
+-----basic usage
+<div *ngIf="condition" class="className">
+    <h4 class="alert-heading">condition</h4>
+</div>
+-----ng-template
+<ng-template [ngIf]="condition">
+    <div>Content to render when condition is true.</div>
+</ng-template>
+-----else block
+<div *ngIf="condition; else elseBlock">
+    Content to render when condition is true.
+</div>
+<ng-template #elseBlock>
+    Content to render when condition is false.
+</ng-template>
+-----then & else blocks
+<div *ngIf="condition; then thenBlock else elseBlock"></div>
+<ng-template #thenBlock>
+    Content to render when condition is true.
+</ng-template>
+<ng-template #elseBlock>
+    Content to render when condition is false
+</ng-template>
+-----ng-template ngIf ngIfElse
+<ng-template [ngIf]="heroes" [ngIfElse]="loading">
+    <div class="hero-list">
+        ...
+    </div>
+</ng-template>
+<ng-template #loading>
+    <div>Loading...</div>
+</ng-template>
