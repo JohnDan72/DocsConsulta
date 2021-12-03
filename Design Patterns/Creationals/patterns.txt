@@ -1,0 +1,41 @@
+------------------------------------------------------------------------------------------------
+
+Abstract Factory
+Propósito: Proveer una interfaz para la creación de familias u 
+objetos dependientes relacionados, sin especificar sus clases 
+concretas.
+
+Aplicación:
+Cuando tenemos una o múltiples familias de productos.
+Cuando tenemos muchos objetos que pueden ser cambiados o agregados durante el tiempo de ejecución.
+Cuando queremos obtener un objeto compuesto de otros objetos, los cuales desconocemos a que clase pertenecen.
+Para encapsular la creación de muchos objetos.
+
+------------------------------------------------------------------------------------------------
+Builder
+Propósito: Separar la construcción de un objeto complejo de su 
+representación para que el mismo proceso de construcción puede 
+crear diferentes representaciones.
+
+El "Builder" conoce a detalle las clases concretas de los objetos 
+que serán creados, nadie más.
+
+A diferencia de otros patrones creacionales que construyen productos 
+de una sola vez, el patrón "Builder" construye paso a paso los productos 
+bajo el control del "Director".
+
+Aplicación:
+Construir un objeto compuesto de otros objetos.
+Que la creación de las partes de un objeto sea independiente del objeto principal.
+Ocultar la creación de las partes de un objeto del cliente, de esta manera no existe dependencia entre el cliente y las partes.
+
+------------------------------------------------------------------------------------------------
+
+
+------------------------------------------------------------------------------------------------
+
+
+------------------------------------------------------------------------------------------------
+
+
+------------------------------------------------------------------------------------------------

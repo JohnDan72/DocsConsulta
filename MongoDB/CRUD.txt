@@ -1,0 +1,50 @@
+--------------------------------------------------------------------------
+Create
+
+* insertOne: db.<collection>.insertOne({ <data> })
+    - db.users.insertOne({ 
+        id: 1,
+        name: 'Juan Dan',
+        tel: 2221063405
+    })
+    - db.users.insertOne({ id: 2 , name: 'Daniel'});
+* insertMany: db.<collection>.insertMany([
+                                            {<data-1>} , 
+                                            {<data-2>} , 
+                                            ... , 
+                                            { <data-n> }
+                                        ])
+    - db.users.insertMany([
+                            {
+                                "nombre": "Juan Pablo",
+                                "edad": 28
+                            },
+                            {
+                                "nombre": "Sebastian Sanchez",
+                                "edad": 28
+                            },
+                            {
+                                "nombre": "Mario Gonzalez",
+                                "edad": 28
+                            }
+                        ])
+--------------------------------------------------------------------------
+
+Read
+* findOne: db.<collection>.findOne({ <where> }) , .pretty() to show json as better as it can
+    - db.users.findOne({ name: 'Daniel' })
+    - db.users.findOne({ edad: 24})
+* find: db.<coll>.find({ <where> }).pretty()
+    - db.users.find({ edad: {$gt: 40}}) //all users where their edad is greater than 40
+    - db.users.find({ name: /D/ }) // all users where their name like '%D%'
+--------------------------------------------------------------------------
+
+Update
+
+--------------------------------------------------------------------------
+
+Delete
+
+--------------------------------------------------------------------------
+
+

@@ -1,0 +1,16 @@
+Intalling
+
+ * go to mongodb.com/try
+ * download tools/MongoDB database tools , on-premises/MongoDB Community Server (custom and add vars)
+ * go to shel and tap 'mongo' to start
+ * as admin user: net stop MongoDB
+ * run server: mongod --dbpath "path/data"
+ * en otra shell: 'mongo' to start
+ * show dbs
+
+----------------------------------------------------------------------
+Create new db
+ * use <db-name>
+ * show collections
+ * crear nueva collection con data:
+    - db.<collection-name>.insertOne({ <data> })
