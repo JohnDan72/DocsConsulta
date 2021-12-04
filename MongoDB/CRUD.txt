@@ -27,7 +27,7 @@ Create
                                 "nombre": "Mario Gonzalez",
                                 "edad": 28
                             }
-                        ])
+                        ],{ ordered: false}) //inserta todos los que pueda sin tomar en cuenta los fails
 --------------------------------------------------------------------------
 
 Read
@@ -37,6 +37,38 @@ Read
 * find: db.<coll>.find({ <where> }).pretty()
     - db.users.find({ edad: {$gt: 40}}) //all users where their edad is greater than 40
     - db.users.find({ name: /D/ }) // all users where their name like '%D%'
+    - db.users.find({ name: {$regex: /^d/i }}) // all users where their name starts with d/D
+* find ventas que superen objetivo y que el objetivo sea menor a 100
+    (solo muestra venta y objetivo, omite _id)
+    -   db.ventas.find(
+            {
+                $expr: {
+                    $and: [
+                        {$gt: ["$ventas","$objetivo"]} ,
+                        { $lt:["$objetivo",100]}
+                    ]
+                }
+            },
+            { venta: 1, objetivo: 1, _id: 0 }
+        )
+* find usuarios.nombre usuarios.edad que inicien en D/d ordenados por edad descendente
+    -   db.usuarios.find(
+            {nombre: {$regex: /^d/i}},
+            {nombre: 1 , edad: 1, _id: 0}
+        ).sort({edad: -1}) 
+* group with aggregation (obtiene los nombres con un array de los usuarios)
+    db.usuarios.aggregate([
+        {
+            $group:{
+                _id: { "$edad" },
+                total: { $sum: 1},
+                nombres: {$push: "$nombre"}
+            }
+        },
+        {
+            $match: { "total": { $lt: 100 } }
+        }
+    ])
 --------------------------------------------------------------------------
 
 Update
@@ -48,3 +80,6 @@ Delete
 --------------------------------------------------------------------------
 
 
+Import json
+desde cmd de windows (no shell mongodb)
+* mongoimport <path file>.json -d <dbName> -c <collection name> --jsonArray --drop
