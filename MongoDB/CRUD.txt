@@ -69,6 +69,12 @@ Read
             $match: { "total": { $lt: 100 } }
         }
     ])
+* sort , skip y limit
+    db.empleados.find({},{EmpID: 1 , Nombre: 1 , Apellido: 1 , _id: 0})
+                .sort({EmpID: 1})
+                .skip(2)
+                .limit(4)
+                .pretty()
 --------------------------------------------------------------------------
 
 Update
