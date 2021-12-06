@@ -1,0 +1,9 @@
+* create new project
+    npm create-react-app <name-app>
+
+* run app
+    npm start
+
+* run test with jest , enzyme
+    npm run test
+

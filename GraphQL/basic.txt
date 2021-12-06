@@ -1,0 +1,17 @@
+* installing
+    npm i express-graphql graphql
+
+* usage
+    * import { graphqlHTTP } from 'express-graphql'
+    * const schema = require('../path-to-main-schema')
+    * in a router use as a middleware
+        // additional middleware
+        router.use( validarJWT )
+        router.use('/', graphqlHTTP(( req = request ) => {
+            return {
+                schema,
+                context: {
+                    user: req.user //en caso de usar un middleware adicional
+                }
+            }
+        }))

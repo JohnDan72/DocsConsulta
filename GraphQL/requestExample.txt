@@ -1,0 +1,50 @@
+* in POSTMAN
+
+    *url: http://localhost:8080/api/cursos_db
+
+    * GET request
+        GraphQL body:
+        {
+            courses{
+                ok
+                msg
+                errors{
+                    msg
+                }
+                total
+                courses{
+                    id
+                    name
+                    status
+                    professor{
+                        id
+                        name
+                        age
+                    }
+                }
+            }
+        }
+
+    * POST request
+        GraphQL body:
+        mutation{
+            addCourse(
+                name: "Angular Avanzado parte 2",
+                language: "javascript",
+                professorId: "618b0f63bc654c594877b733"
+            ){
+                ok
+                msg
+                errors{msg}
+                course{
+                    id
+                    name
+                    language
+                    status
+                    professor{
+                        id
+                        name
+                    }
+                }
+            }
+        }

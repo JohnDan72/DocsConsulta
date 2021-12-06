@@ -1,0 +1,5 @@
+* install packages
+    npm i
+* run file
+    node <file-name>.js
+    nodemon <file-name>.js

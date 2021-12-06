@@ -1,0 +1,85 @@
+
+* TO SET QUERIES
+const RootQuery = new GraphQLObjectType({
+    name: 'RootQueryType',
+    fields:{
+        // courses
+        course: {
+            type: ReadOneResponseType,
+            args: {
+                id: {type: GraphQLString},
+            },
+            resolve(parent , args){
+                return getCourseById( parent , args );
+            }
+        },
+        courses: {
+            type: ReadAllResponseType,
+            resolve(parent, args , context){
+
+                return getAllCourses( parent , args , context);
+            }
+        }
+    }
+});
+
+* TO SET MUTATION OPERATIONS
+const Mutation = new GraphQLObjectType({
+    name: 'Mutation',
+    fields: {
+        // COURSES OPERATIONS
+        addCourse: {
+            type: CreatedUpdatedResponseType,
+            args:{
+                name: { type: GraphQLString },
+                language: { type: GraphQLString },
+                professorId: { type: GraphQLID },
+            },
+            resolve(parent , args){
+                return createCourse(parent,args);                 
+            }
+        },
+        updateCourse: {
+            type: CreatedUpdatedResponseType,
+            args: {
+                id: {type: GraphQLID},
+                name: { type: GraphQLString },
+                language: { type: GraphQLString }
+            },
+            resolve(parent , args){
+                return updateCourse(parent,args);
+            }
+        },
+        deleteCourse: {
+            type: CreatedUpdatedResponseType,
+            args: {
+                id: {type: GraphQLID}
+            },
+            resolve(parent , args){
+                return deleteCourse(parent,args);
+            }
+        },
+        restoreAllCourses: {
+            type: UpdatedDataType,
+            resolve(parent , args){
+                return Course.updateMany({status: false},{status: true});
+            }
+        }
+        // LOGIN OPERATIONS
+        login: {
+            type: LoginResponseType,
+            args:{
+                email: {type: GraphQLString},
+                password: {type: GraphQLString},
+            },
+            resolve(parent,args){
+                return login(parent,args);
+            }
+        }
+    }
+})
+
+module.exports = new GraphQLSchema({
+    query: RootQuery,
+    mutation: Mutation
+});

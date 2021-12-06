@@ -57,16 +57,22 @@ Read
             {nombre: 1 , edad: 1, _id: 0}
         ).sort({edad: -1}) 
 * group with aggregation (obtiene los nombres con un array de los usuarios)
-    db.usuarios.aggregate([
+    db.users.aggregate([
         {
             $group:{
-                _id: { "$edad" },
+                _id: { edad: "$edad" },
                 total: { $sum: 1},
                 nombres: {$push: "$nombre"}
             }
         },
         {
             $match: { "total": { $lt: 100 } }
+        },
+        {
+            $sort: { total: 1}
+        },
+        {
+            $project:{ total: 1 , nombres: 1}
         }
     ])
 * sort , skip y limit

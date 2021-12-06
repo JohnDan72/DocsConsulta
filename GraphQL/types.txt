@@ -1,0 +1,36 @@
+* examples
+    const MessageType = new GraphQLObjectType({
+        name: 'Message',
+        fields: () => ({
+            msg: {type: GraphQLString}
+        })
+    });
+    const CourseType = new GraphQLObjectType({
+        name: 'Course',
+        fields: () => ({
+            id: {type: GraphQLID},
+            name: {type: GraphQLString},
+            status: { type: GraphQLBoolean},
+            professor: { //like populate
+                type: require('./professor').ProfessorType,
+                resolve(parent , args){
+                    return Professor.findById( parent.professorId );
+                }
+            }
+        })
+    });
+
+    // type de response genérica para agrupar el success o error de un GET all de cualquier modelo
+    const ReadAllResponseType = new GraphQLObjectType({
+        name: 'ReadAllResponse',
+        fields: () => ({
+            ok:     {type: GraphQLBoolean},
+            msg:    {type: GraphQLString},
+            total:  {type: GraphQLInt},
+            errors: {
+                type: new GraphQLList(MessageType)
+            },
+            courses:    { type: new GraphQLList(require('./course').CourseType)},
+        })
+    });
+
