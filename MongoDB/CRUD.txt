@@ -75,14 +75,85 @@ Read
                 .skip(2)
                 .limit(4)
                 .pretty()
+* .$ operator
+    //muestra todas las aficiones
+    db.users.find({aficiones: "correr"},{ _id: 0})
+    //solo muestra el campo validado
+    db.users.find({aficiones: "correr"},{"aficiones.$": 1 _id: 0})
+    // muestra dos aficiones $slice:[saltos,escoge]
+    db.users.find({nombre: {$regex: /da/i}},{aficiones: {$slice: [1,2]}, _id: 0})
 --------------------------------------------------------------------------
 
 Update
+* updateOne({<filter>},{<set>})
+* update({<filter>},{<set>})
+    db.users.updateOne(
+        {
+            nombre: "Juan Daniel"
+        },
+        {
+            $set: 
+                {
+                    notas: [
+                            {
+                                anio:1,
+                                mates:98,
+                                ingles:89
+                            },
+                            {
+                                anio:2,
+                                mates:80,
+                                ingles:78
+                            },
+                            {
+                                anio:3,
+                                mates:78,
+                                ingles:56
+                            }
+                    ]
+                }
+        }
+    )
+    // with $unset
+    db.users.update({id:{$exists: 1}},{$unset:{id:''}})
 
+* updateMany({<filter>},{<set>})
+    db.users.updateMany({},{$set: {aficiones: ['1','2','3','4',...]}})
+    //update aficiones where (20<=edad<=24) U (edad=50)
+    db.users.updateMany(
+        {
+            $or: 
+                [
+                        {$and:[ {edad: {$gte: 20}}, {edad: {$lte: 24}}]} ,
+                        {edad: 50}
+                ]
+        },
+        {
+            $set:
+                { 
+                    aficiones: ['otro 1', 'otro 2','otro 3']
+                }
+        }
+    )
 --------------------------------------------------------------------------
 
 Delete
 
+* deleteOne({<filter>})
+    deleteOne({nombre: 'Mario'});
+
+* deleteMany({<filter>})
+    //borrar todos los users que empiecen con d/D su nombre
+    deleteMany({ nombre: {$regex: /^d/i }})
+
+* db.users.drop() // borrar collection
+
+* delete with update
+    update({ nombre: {$regex: /^d/i }},{$set:{status: false}})
+
+* drop database
+    use <database>
+    db.dropDatabase()
 --------------------------------------------------------------------------
 
 
