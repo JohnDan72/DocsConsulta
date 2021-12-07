@@ -163,6 +163,7 @@ Delete
 --------------------------------------------------------------------------
 
 
-Import json
-desde cmd de windows (no shell mongodb)
-* mongoimport <path file>.json -d <dbName> -c <collection name> --jsonArray --drop
+* Import json, desde cmd de windows (no shell mongodb)
+    * mongoimport <path file>.json -d <dbName> -c <collection name> --jsonArray --drop
+* Import CSV
+    *mongoimport -d titanesDB -c avistamientos --type csv --headerline --ignoreBlanks --file titanesdb_avistamientos.csv
