@@ -1,0 +1,37 @@
+* Obtener el mayor en un campo específico entre 2 collections
+    db.coll_1.aggregate([
+        {
+            $match: {
+                campo_condición: "<valor>"
+            }
+        },
+        {   
+
+            $lookup: { 
+                from: "coll_2",
+                localField: "id_coll_1",
+                foreignField: "id_coll_2",
+                as: "pseudonimo"
+            }
+        },
+        { 
+            $project: { 
+                _id: 0,
+                id_coll_1: 1,
+                pseudonimo: {$arrayElemAt: [ "$pseudonimo", 0 ]},
+            } 
+        },
+        { 
+            $project: { 
+                id_coll_1: 1,
+                campo_1: "$pseudonimo.campo_1",
+                campo_2: "$pseudonimo.campo_2"
+            } 
+        },
+        {
+            $sort:{
+                campo_2: -1
+            }
+        },
+        { $limit : 1 }
+    ]).pretty()
