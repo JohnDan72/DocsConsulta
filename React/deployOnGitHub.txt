@@ -1,0 +1,12 @@
+* commit all changes in your React project
+* type in cmd: 
+    * npm run build
+* changes build dir for docs
+* add, commit and push changes
+* go to settings/pages from project 
+    * select master - docs
+    * await to deploy
+* change docs/index.html
+    * change all href="/..."
+    * to href="./..."
+* deploy changes
