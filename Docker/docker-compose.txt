@@ -1,0 +1,39 @@
+* instalar imagen desde doker hub
+    * elige la(s) imagen(es) que quieres descargar e instalalas en un archivo .yml
+        * file:
+            version: '3.1'
+            services:
+
+              db:
+                container_name: postgres_ctn
+                image: postgres
+                restart: always
+                environment:
+                ports: 
+                  - 5432:5432
+                environment:
+                  POSTGRES_USER: postgres_user
+                  POSTGRES_PASSWORD: 123456
+                  POSTGRES_DB: example_db
+
+              adminer:
+                container_name: adminer_ctn
+                image: adminer
+                restart: always
+                depends_on:
+                  - db
+                ports:
+                  - 9090:8080
+    * run: docker-compose -f <path-file>.yml pull
+    * check images:
+      * docker image ls
+    * up containers en segundo plano:
+      docker-compose -f .\postgres.yml up -d
+
+* subir imagen a nuestro repo en dockerhub
+  * se crea un nuevo tag para el repo
+    docker tag <imagen>:<tag> <nuevo-nombre>:<nuevo-tag>
+  * login
+    docker login
+  * docker push <repo-name>:<tag-name>
+        
