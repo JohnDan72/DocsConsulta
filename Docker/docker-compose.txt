@@ -37,3 +37,19 @@
     docker login
   * docker push <repo-name>:<tag-name>
         
+* scalling containers (escala a 3 servicios de front-end, se debe mofdificar el 
+  file .yml para evitar conflicto en el nombre del container y del mapeo de puertos)
+    * docker-compose -f ./stackbilling.yml up --scale billing-front=3 -d --force-recreate
+    * lo mismo pero desde el archivo .yml
+      * agregar el siguiente atributo en el servicio corresondiente
+        deploy:
+          replicas: 3
+          resources: 
+            limits:
+              #indica el 10% de todo el cpu
+              cpus: "0.15"
+              memory: 250M
+            reservations:
+              cpus: 0.1
+              memory: 128M
+          

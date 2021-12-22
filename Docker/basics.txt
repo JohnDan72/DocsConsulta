@@ -5,8 +5,26 @@
     docker image ls
     docker container ls
     docker ps -a
+    docker ps --format "table {{.ID}}\t{{.Image}}\t{{.Status}}\t{{.Names}}"
+    docker ps --format "table {{.Ports}}\t{{.Image}}\t{{.Status}}\t{{.Names}}\t{{.Networks}}"
 
 * delete an image / stop a container
     docker image rm <img-name>
     docker container stop <container-name>
 
+* delete all containers exited
+    * docker system prune
+        * yes (tener cuidado con esto en entornos reales)
+
+* visualize stats for cpu & memory consum
+    * docker stats --no-stream -a
+
+
+* listar networks
+    * docker network ls
+
+* borrar redes (para gestión de entornos distintos)
+    * docker network prune
+
+* detener todos los containers de forma mas rapida (-q indica que solo muestre los ID's)
+    * docker stop $(docker ps -a -q)
