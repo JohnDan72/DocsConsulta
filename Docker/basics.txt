@@ -1,0 +1,12 @@
+* docker --version
+* docker-compose --version
+
+* list images / containers / all process
+    docker image ls
+    docker container ls
+    docker ps -a
+
+* delete an image / stop a container
+    docker image rm <img-name>
+    docker container stop <container-name>
+
