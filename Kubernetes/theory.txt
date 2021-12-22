@@ -1,0 +1,15 @@
+* Kubernetes
+    *   Es un sistema opensource para automatizar el despliegue, 
+        escalado y administración de aplicaciones en contenedores
+        conocido como k8s (pronounced Kate's).
+    * Features:
+        * opensource
+        * Auto-sanado
+        * horizontal scalling
+        * Balanceo de carga y discovery
+        * Licencia Apache v2
+        * creado por Google en 2015
+        * escrito en Go
+        * last version 1.20 (2021)
+        * Mantenido por Cloud Native Computing Foundation
+            (parte de Linux foundation)

@@ -1,0 +1,25 @@
+Todo se conoce como Objetos
+Peticiones de definición se hacen mediante la API y se almacenan en la db etcd en formato yaml
+
+
+* Conceptos:
+    * PODS:     
+        Unidad más pequeña que se puede desplegar y gestionar en kubernetes.
+        Grupo de 1 o más contenedores que comparten almacenamiento y red y 
+        especificaciones de cómo ejecutarse. Son efímeros.
+    * Deployments:
+        Describe el estado deseado de una implementación, ejecuta múltiples réplicas
+        de la aplicación, reemplaza las que estan defectuosas o las que no responden
+    * Services:
+        Definición de cómo exponer una aplicación que se ejecuta en conjunto de PODS 
+        como un servicio de red (por defecto se usa roud-robin para balanceo de carga)
+    * Config Map: 
+        Permite desacoplar la configuración para hacer las imagenes más portables, almacenan
+        variables de entorno, argumentos para línea de comandos, o configuración de volúmenes
+        que pueden consumir los PODS (no encriptación)
+    * Labels: 
+        Pares de clave-valor ("environment" : "qa") para organizar, seleccionar,
+        consultar y monitorear objetos de forma más eficiente, ideales para UI y CLI's
+    * Selectores:
+        Mecanismo para hacer consultas a las etiquetas.
+        kubectl get pods -l 'environment in (production),tier in (frontend)'

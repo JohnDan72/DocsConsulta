@@ -1,0 +1,8 @@
+* Escalabilidad
+    * Capacidad de los sistemas para adaptarse al crecimiento, por demanda y complejidad
+
+* vertical scalling
+    * Agregar más recursos al mismo nodo y aumentar el poder de cómputo
+
+* horizontal scalling
+    * Agregar más nodos que se adapten a la carga de trabajo
