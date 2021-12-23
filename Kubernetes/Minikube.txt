@@ -1,0 +1,9 @@
+* Principal commands
+    * kubectl version --client
+    * minikube start
+    * check minikube container
+    * minikube stop
+    * minikube status
+    * check dashboard
+        * minikube dashboard
+        * or from your browser

@@ -15,4 +15,4 @@
 * pull and run first image
     * run: docker pull sotobotero/udemy-devops:0.0.1
     * run: docker run -p 80:80 -p 8080:8080 --name billingapp sotobotero/udemy-devops:0.0.1
-    * chack de deployed services from port 80 (front-end) & 8080 (back-end)
+    * check de deployed services from port 80 (front-end) & 8080 (back-end)
