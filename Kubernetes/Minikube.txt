@@ -7,3 +7,23 @@
     * check dashboard
         * minikube dashboard
         * or from your browser
+
+
+* crear un nuevo pod dada una imagen (por config default, solo acepta imagenes remotas)
+    * kubectl run kbillingapp --image=sotobotero/udemy-devops:0.0.1 --port=80 80
+
+* ver pods activos 
+    * kubectl get pods
+
+* ver detalles de un pod
+    * kubectl describe pod kbillingapp
+
+* exponer pod para microservice (con tipo de balanceo y mapeo de puerto externo e interno)
+    * kubectl expose pod kbillingapp --type=LoadBalancer --port=8080 --target-port=80
+    * checar servicios:  kubectl get services
+
+* dar salida al servicio
+    * minikube service kbillinapp
+
+* eliminar un servicio
+    * kubectl delete service kbillingapp

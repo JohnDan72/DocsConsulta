@@ -1,0 +1,7 @@
+
+para las claves de la base de datos de usan los siguientes comandos para la codificación:
+
+* echo -n "postgres" | base64
+
+para revertir 
+* echo "cXdlcnR5" | base64 -d
