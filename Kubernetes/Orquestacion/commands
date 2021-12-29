@@ -1,0 +1,17 @@
+ * crear variables necesarias para que el engine apunte al registro de minikube
+    * minikube docker-env
+* para que aplique la configuración
+    * eval $(minikube -p minikube docker-env)
+
+* back-end (build image)
+    * docker build -t billingapp-back:0.0.4 --no-cache --build-arg JAR_FILE=./*.jar .
+
+* front-end (build-image)
+    * docker build -t billingapp-front:0.0.4 --no-cache .
+
+* check images 
+    * docker image ls
+
+* make deploy and the services
+    * go to corresponding dir
+    * kubectl apply -f ./

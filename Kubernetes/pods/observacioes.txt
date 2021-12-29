@@ -5,3 +5,18 @@ para las claves de la base de datos de usan los siguientes comandos para la codi
 
 para revertir 
 * echo "cXdlcnR5" | base64 -d
+
+
+Preparación de archivos
+    * kubectl apply -f .\secret-dev.yml
+    * kubectl apply -f .\secret-pgadmin.yml
+    * kubectl apply -f .\configmap-postgres-initdb.yaml
+    * kubectl apply -f .\persistent-volume.yaml
+    * kubectl apply -f .\persistent-volume-claim.yaml
+    * kubectl apply -f .\deployment-postgres.yaml
+    * kubectl apply -f .\deployment-pgadmin.yaml
+    * kubectl apply -f .\service-pgadmin.yaml
+    * kubectl apply -f .\service-postgres.yaml
+
+    * borrar todos los apply
+        * kubectl delete -f ./
