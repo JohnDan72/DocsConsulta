@@ -1,0 +1,29 @@
+* Composición de docker
+    * Docker deamon server
+    * API Rest
+    * Docker CLI Client
+
+* Images (composition, read only layer, dentro de Dockerfile)
+    * FROM - de donde viene la images (sistema operativo etc...)
+    * RUN - acciones ejecutadas para confiurar lo que habrá dentro de esta imágen
+    * CMD - línea que se ejecutará cuando termine todas las configuraciones
+
+Ejemplo:
+
+FROM node:14
+RUN mkdir -p /usr/src/app
+WORKDIR /usr/src/app
+ADD package.json /usr/src/app/package.json
+ADD package-lock.json /usr/src/app/package-lock.json
+RUN npm install
+# Copy files into the container image.
+ADD . /usr/src/app
+EXPOSE 8080
+
+* Containers:
+    * capa adicional que será la instancia de alguna image preconfigurada
+    * se puede crear/eliminar esta capa las veces que sea necesario
+    * Estructura:
+        * Image
+        * Volumn
+        * Network
